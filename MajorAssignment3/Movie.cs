@@ -18,8 +18,8 @@ namespace MovieApp.MovieUtils
             Director = director;
         }
 
-        public int Id { get => id; set => id = value; }
-        public string Title { get => title; set => title = value; }
-        public string Director { get => director; set => director = value; }
+        public int Id { get; }
+        public string Title { get; }
+        public string Director { get; }
     }
 }

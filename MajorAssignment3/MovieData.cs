@@ -47,6 +47,19 @@ namespace MovieApp.Data
             command.ExecuteNonQuery();
             connection.Close();
         }
+        
+        public void MovieDelete (int id)
+        {
+            SqlConnection connection = new SqlConnection(Connections.ConnectionString());
+            SqlCommand command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandText = "DELETE FROM Movies WHERE Id=@Id";
+            command.Parameters.AddWithValue("@Id", id);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
 
         public void MovieAdd (string title, string director)
         {
@@ -56,19 +69,6 @@ namespace MovieApp.Data
             command.CommandText = "INSERT INTO Movies(Title, Director) VALUES (@Title, @Director)";
             command.Parameters.AddWithValue("@Title", title);
             command.Parameters.AddWithValue("@Director", director);
-
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
-        }
-        
-        public void MovieDelete (int id)
-        {
-            SqlConnection connection = new SqlConnection(Connections.ConnectionString());
-            SqlCommand command = new SqlCommand();
-            command.Connection = connection;
-            command.CommandText = "DELETE FROM Movies WHERE Id=@Id";
-            command.Parameters.AddWithValue("@Id", id);
 
             connection.Open();
             command.ExecuteNonQuery();
